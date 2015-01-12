@@ -1,7 +1,7 @@
 Package.describe({
   name: "jameslefrere:twitch",
   summary: "Twitch API integration for Meteor",
-  version: "0.1.1",
+  version: "0.1.2",
   git: "https://github.com/JamesLefrere/meteor-twitch.git"
 });
 
