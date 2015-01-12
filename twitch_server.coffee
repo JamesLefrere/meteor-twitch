@@ -13,7 +13,6 @@ OAuth.registerService "twitch", 2, null, (query) ->
 
 
 getAccessToken = (query) ->
-  console.log "getAccessToken"
   config = ServiceConfiguration.configurations.findOne(service: "twitch")
   throw new ServiceConfiguration.ConfigError()  unless config
   response = undefined
@@ -35,13 +34,10 @@ getAccessToken = (query) ->
   if response.data.error # if the http response was a json object with an error attribute
     throw new Error("Failed to complete OAuth handshake with Twitch. " + response.data.error)
   else
-    console.log "received", response.data.access_token
     return response.data.access_token
   return
 
 getIdentity = (accessToken) ->
-  console.log "getIdentity"
-  console.log "Access token: ", accessToken
   config = ServiceConfiguration.configurations.findOne(service: "twitch")
   throw new ServiceConfiguration.ConfigError()  unless config
   response = undefined
@@ -55,7 +51,6 @@ getIdentity = (accessToken) ->
     )
     return response.data
   catch err
-    console.log response
     throw _.extend(new Error("Failed to fetch identity from Twitch. " + err.message),
       response: err.response
     )
