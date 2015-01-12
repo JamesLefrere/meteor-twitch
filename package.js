@@ -14,6 +14,7 @@ Package.onUse(function(api) {
     "http"
     ], ["client", "server"]);
   api.use("templating", "client");
+  api.addFiles("twitch_globals.js", ["client", "server"]);
   api.addFiles([
     "twitch_client.coffee",
     "twitch_configure.coffee",
