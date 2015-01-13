@@ -2,12 +2,21 @@ OAuth.registerService "twitch", 2, null, (query) ->
   accessToken = getAccessToken(query)
   identity = getIdentity(accessToken)
   serviceData:
-    id: identity.id
     accessToken: OAuth.sealSecret(accessToken)
+    id: identity._id
+    display_name: identity.display_name
+    name: identity.name
+    type: identity.type
+    bio: identity.bio
+    created_at: identity.created_at
+    updated_at: identity.updated_at
+    logo: identity.logo
+    _links: identity._links
     email: identity.email
-    username: identity.login
+    partnered: identity.partnered
 
   options:
+    username: identity.display_name
     profile:
       name: identity.name
 
